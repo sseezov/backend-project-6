@@ -6,7 +6,7 @@
   "main": "./server/plugin.js",
   "scripts": {
     "start": "fastify start server/plugin.js -l debug -P -o",
-    "build": "vite"
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
