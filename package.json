@@ -1,0 +1,23 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "[![Actions Status](https://github.com/sseezov/backend-project-6/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/sseezov/backend-project-6/actions)",
+  "main": "./server/plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sseezov/backend-project-6.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sseezov/backend-project-6/issues"
+  },
+  "homepage": "https://github.com/sseezov/backend-project-6#readme",
+  "dependencies": {
+    "fastify": "^5.3.3"
+  }
+}
