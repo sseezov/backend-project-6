@@ -1,0 +1,16 @@
+extends layout/app.pug
+
+block header
+  nav.navbar.navbar-expand-lg.navbar-light.bg-white
+    .container
+      a.navbar-brand(href='/') Менеджер задач
+      button.navbar-toggler(data-bs-toggle='collapse' data-bs-target='#navbarToggleExternalContent')
+        span.navbar-toggler-icon
+      #navbarToggleExternalContent.collapse.navbar-collapse
+        ul.navbar-nav.justify-content-end.w-100
+          li.nav-item.me-auto
+            a.nav-link(href='/users') Пользователи
+          li.nav-item
+            a.nav-link(href='/session/new') Вход
+          li.nav-item
+            a.nav-link(href='/users/new') Регистрация
