@@ -9,8 +9,8 @@ block header
       #navbarToggleExternalContent.collapse.navbar-collapse
         ul.navbar-nav.justify-content-end.w-100
           li.nav-item.me-auto
-            a.nav-link(href='/users') Пользователи
+            a.nav-link(href='/users')= t('layouts.application.users')
           li.nav-item
-            a.nav-link(href='/session/new') Вход
+            a.nav-link(href='/session/new')= t('layouts.application.signIn')
           li.nav-item
-            a.nav-link(href='/users/new') Регистрация
+            a.nav-link(href='/users/new')= t('layouts.application.signUp')
