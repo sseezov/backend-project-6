@@ -1,14 +1,18 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fastifyView from '@fastify/view';
+import fastifyObjectionjs from 'fastify-objectionjs';
 import Pug from 'pug';
 import i18next from 'i18next';
 import getHelpers from './helpers/index.js';
+import * as knexConfig from '../knexfile.js';
+import models from '../models/index.js';
 
 import ru from './locales/ru.js';
 import en from './locales/en.js';
 
 const __dirname = fileURLToPath(path.dirname(import.meta.url));
+const mode = process.env.NODE_ENV || 'development';
 
 const setupLocalization = async () => {
   await i18next
@@ -42,8 +46,47 @@ const setUpViews = (app) => {
   // });
 };
 
+const registerPlugins = async (app) => {
+  // await app.register(fastifySensible);
+  // // await app.register(fastifyErrorPage);
+  // await app.register(fastifyReverseRoutes);
+  // await app.register(fastifyFormbody, { parser: qs.parse });
+  // await app.register(fastifySecureSession, {
+  //   secret: process.env.SESSION_KEY,
+  //   cookie: {
+  //     path: '/',
+  //   },
+  // });
+
+  // fastifyPassport.registerUserDeserializer(
+  //   (user) => app.objection.models.user.query().findById(user.id),
+  // );
+  // fastifyPassport.registerUserSerializer((user) => Promise.resolve(user));
+  // fastifyPassport.use(new FormStrategy('form', app));
+  // await app.register(fastifyPassport.initialize());
+  // await app.register(fastifyPassport.secureSession());
+  // await app.decorate('fp', fastifyPassport);
+  // app.decorate('authenticate', (...args) => fastifyPassport.authenticate(
+  //   'form',
+  //   {
+  //     failureRedirect: app.reverse('root'),
+  //     failureFlash: i18next.t('flash.authError'),
+  //   },
+  // // @ts-ignore
+  // )(...args));
+
+  // await app.register(fastifyMethodOverride);
+  await app.register(fastifyObjectionjs, {
+    knexConfig: knexConfig[mode],
+    models,
+  });
+};
+
+
 export default async (app, _options) => {
+  await registerPlugins(app);
   await setupLocalization();
+  console.log(111, app.objection)
   setUpViews(app);
 
   app
