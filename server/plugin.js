@@ -86,12 +86,16 @@ const registerPlugins = async (app) => {
 export default async (app, _options) => {
   await registerPlugins(app);
   await setupLocalization();
-  console.log(111, app.objection)
   setUpViews(app);
 
   app
     .get('/', { name: 'root' }, (req, reply) => {
       reply.view('/header')
+    })
+    .get('/users', { name: 'users' }, async (req, reply) => {
+      const users = await app.objection.models.user.query();
+      reply.render('users/index', { users });
+      return reply;
     })
 
   return app;
