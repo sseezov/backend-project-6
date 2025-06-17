@@ -9,6 +9,9 @@ html(lang="en")
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
   body.d-flex.flex-column.min-vh-100
     block header
+    ul
+      li.nav-item
+        a.nav-link(href='/users/new')= t('layouts.application.signUp')
     block content
     footer
       .container.my-5.pt-4.border-top

@@ -1,10 +1,10 @@
-extends ../layouts/application.pug
+extends ../layout/app.pug
 
 block header
   = t('views.users.new.signUp')
 
 block content
-  +formFor()(action=route('users') method='post')
-    +input(user, 'email', errors)(type="text")
-    +input(user, 'password', errors)(type="password")
-    +submit(user)(value=t('views.users.new.submit'))
+  //- +formFor()(action=route('users') method='post')
+  //-   +input(user, 'email', errors)(type="text")
+  //-   +input(user, 'password', errors)(type="password")
+  //-   +submit(user)(value=t('views.users.new.submit'))
