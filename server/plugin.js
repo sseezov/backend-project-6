@@ -7,6 +7,7 @@ import i18next from 'i18next';
 import getHelpers from './helpers/index.js';
 import * as knexConfig from '../knexfile.js';
 import models from '../models/index.js';
+import addRoutes from './routes/index.js';
 
 import ru from './locales/ru.js';
 import en from './locales/en.js';
@@ -88,15 +89,6 @@ export default async (app, _options) => {
   await setupLocalization();
   setUpViews(app);
 
-  app
-    .get('/', { name: 'root' }, (req, reply) => {
-      reply.view('/header')
-    })
-    .get('/users', { name: 'users' }, async (req, reply) => {
-      const users = await app.objection.models.user.query();
-      reply.render('users/index', { users });
-      return reply;
-    })
-
+  addRoutes(app);
   return app;
 };
